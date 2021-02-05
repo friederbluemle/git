@@ -21,6 +21,7 @@ int advice_reset_quiet_warning = 1;
 int advice_resolve_conflict = 1;
 int advice_sequencer_in_use = 1;
 int advice_implicit_identity = 1;
+int advice_default_branch = 1;
 int advice_detached_head = 1;
 int advice_set_upstream_failure = 1;
 int advice_object_name_warning = 1;
@@ -83,6 +84,7 @@ static struct {
 	{ "resolveConflict", &advice_resolve_conflict },
 	{ "sequencerInUse", &advice_sequencer_in_use },
 	{ "implicitIdentity", &advice_implicit_identity },
+	{ "defaultBranch", &advice_default_branch},
 	{ "detachedHead", &advice_detached_head },
 	{ "setUpstreamFailure", &advice_set_upstream_failure },
 	{ "objectNameWarning", &advice_object_name_warning },
@@ -106,9 +108,10 @@ static struct {
 	int enabled;
 } advice_setting[] = {
 	[ADVICE_ADD_EMBEDDED_REPO]			= { "addEmbeddedRepo", 1 },
-	[ADVICE_AM_WORK_DIR] 				= { "amWorkDir", 1 },
-	[ADVICE_CHECKOUT_AMBIGUOUS_REMOTE_BRANCH_NAME] 	= { "checkoutAmbiguousRemoteBranchName", 1 },
+	[ADVICE_AM_WORK_DIR]				= { "amWorkDir", 1 },
+	[ADVICE_CHECKOUT_AMBIGUOUS_REMOTE_BRANCH_NAME]	= { "checkoutAmbiguousRemoteBranchName", 1 },
 	[ADVICE_COMMIT_BEFORE_MERGE]			= { "commitBeforeMerge", 1 },
+	[ADVICE_DEFAULT_BRANCH]				= { "defaultBranch", 1 },
 	[ADVICE_DETACHED_HEAD]				= { "detachedHead", 1 },
 	[ADVICE_FETCH_SHOW_FORCED_UPDATES]		= { "fetchShowForcedUpdates", 1 },
 	[ADVICE_GRAFT_FILE_DEPRECATED]			= { "graftFileDeprecated", 1 },
@@ -143,7 +146,7 @@ static struct {
 
 static const char turn_off_instructions[] =
 N_("\n"
-   "Disable this message with \"git config advice.%s false\"");
+   "Disable this message with \"git config [--global] advice.%s false\"");
 
 static void vadvise(const char *advice, int display_instructions,
 		    const char *key, va_list params)

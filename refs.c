@@ -565,7 +565,7 @@ void expand_ref_prefix(struct strvec *prefixes, const char *prefix)
 static const char default_branch_name_advice[] = N_(
 "Using '%s' as the name for the initial branch. This default branch name\n"
 "is subject to change. To configure the initial branch name to use in all\n"
-"of your new repositories, which will suppress this warning, call:\n"
+"of your new repositories, call:\n"
 "\n"
 "\tgit config --global init.defaultBranch <name>\n"
 "\n"
@@ -590,7 +590,8 @@ char *repo_default_branch_name(struct repository *r, int quiet)
 	if (!ret) {
 		ret = xstrdup("master");
 		if (!quiet)
-			advise(_(default_branch_name_advice), ret);
+			advise_if_enabled(ADVICE_DEFAULT_BRANCH,
+				_(default_branch_name_advice), ret);
 	}
 
 	full_ref = xstrfmt("refs/heads/%s", ret);

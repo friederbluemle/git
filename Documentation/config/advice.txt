@@ -77,6 +77,10 @@ advice.*::
 		Advice on how to set your identity configuration when
 		your information is guessed from the system username and
 		domain name.
+	defaultBranch::
+		Advice shown when you used linkgit:git-init[1] to
+		initialize a new repository without an existing
+		global config setting for `core.defaultBranch`.
 	detachedHead::
 		Advice shown when you used
 		linkgit:git-switch[1] or linkgit:git-checkout[1]

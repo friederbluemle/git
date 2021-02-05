@@ -22,6 +22,7 @@ extern int advice_reset_quiet_warning;
 extern int advice_resolve_conflict;
 extern int advice_sequencer_in_use;
 extern int advice_implicit_identity;
+extern int advice_default_branch;
 extern int advice_detached_head;
 extern int advice_set_upstream_failure;
 extern int advice_object_name_warning;
@@ -48,6 +49,7 @@ extern int advice_add_empty_pathspec;
 	ADVICE_AM_WORK_DIR,
 	ADVICE_CHECKOUT_AMBIGUOUS_REMOTE_BRANCH_NAME,
 	ADVICE_COMMIT_BEFORE_MERGE,
+	ADVICE_DEFAULT_BRANCH,
 	ADVICE_DETACHED_HEAD,
 	ADVICE_FETCH_SHOW_FORCED_UPDATES,
 	ADVICE_GRAFT_FILE_DEPRECATED,
